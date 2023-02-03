@@ -39,9 +39,9 @@ jobs:
           context: .
           file: dockerfiles/stages/2-opam-deps
           tag: opam-deps
-          build-args:
-            - MINA_REPO=$MINA_REPO
-            - MINA_BRANCH=$MINA_BRANCH
+          build-args: |
+            MINA_REPO=$MINA_REPO
+            MINA_BRANCH=$MINA_BRANCH
 
       - name: Toolchain
         uses: docker/build-push-action@v2
@@ -56,6 +56,9 @@ jobs:
           context: .
           file: dockerfiles/stages/4-deb-builder
           tag: deb-builder
+          build-args: |
+            MINA_BRANCH=$MINA_BRANCH
+            MINA_COMMIT=xxx
 
       - name: Debug
         run: |
