@@ -28,14 +28,12 @@ jobs:
       - name: Build 1
         uses: docker/build-push-action@v2
         with:
-          load: true
           context: .
           tags: build1
 
       - name: Build 2
         uses: docker/build-push-action@v2
         with:
-          load: true
           context: .
           file: Dockerfile2
           tags: build2
@@ -61,7 +59,7 @@ jobs:
           file: mina/dockerfiles/stages/2-opam-deps
           tags: opam-deps
           build-args: |
-            MINA_REPO=${{env.MINA_REPO}}
+            MINA_REPO=http://github.com/${{env.MINA_REPO}}
             MINA_BRANCH=${{env.MINA_BRANCH}}
 
       - name: Toolchain
