@@ -1,0 +1,25 @@
+name: Mina Docker Image Builder
+run-name: Builds Mina Docker image from an arbitrary branch
+on:
+  workflow-dispatch:
+    inputs:
+      repository:
+        type: string
+        required: true
+      branch:
+        type: string
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Mina
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ inputs.repository }}
+          ref: ${{ inputs.branch }}
+
+      - name: Debug
+        run: |
+          git status
