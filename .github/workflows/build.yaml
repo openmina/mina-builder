@@ -1,7 +1,7 @@
 name: Mina Docker Image Builder
 run-name: Builds Mina Docker image from an arbitrary branch
 on:
-  workflow-dispatch:
+  workflow_dispatch:
     inputs:
       repository:
         type: string
