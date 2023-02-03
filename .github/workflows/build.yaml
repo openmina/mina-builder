@@ -30,7 +30,7 @@ jobs:
         with:
           load: true
           context: .
-          tags: build1
+          tags: openmina/build1
 
       - name: Build 2
         uses: docker/build-push-action@v2
@@ -38,6 +38,7 @@ jobs:
           load: true
           context: .
           file: Dockerfile2
+          tags: openmina/build2
 
       - name: Checkout Mina
         uses: actions/checkout@v3
