@@ -9,19 +9,19 @@ on:
       branch:
         type: string
         required: true
+env:
+  MINA_REPO: ${{inputs.repository}}
+  MINA_BRANCH: ${{inputs.branch}}
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      MINA_REPO: ${{inputs.repository}}
-      MINA_BRANCH: ${{inputs.branch}}
     steps:
       - name: Checkout Mina
         uses: actions/checkout@v3
         with:
-          repository: ${{MINA_REPO}}
-          ref: ${{MINA_BRANCH}}
+          repository: $MINA_REPO
+          ref: $MINA_BRANCH
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
